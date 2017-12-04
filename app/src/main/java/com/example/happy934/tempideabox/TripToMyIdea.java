@@ -59,30 +59,27 @@ public class TripToMyIdea extends Fragment implements View.OnClickListener {
 
         if (editTextFrom==null){
             Toast.makeText(getContext(),"null",Toast.LENGTH_SHORT).show();
-        }else {
-//            Toast.makeText(getContext(),"Not null",Toast.LENGTH_SHORT).show();
         }
 
         ImageButton imageButtonFrom = (ImageButton) getView().findViewById(R.id.fromImageButton);
         ImageButton imageButtonTo = (ImageButton) getView().findViewById(R.id.toImageButton);
+
         Button button = (Button) getView().findViewById(R.id.button2);
+
         imageButtonFrom.setOnClickListener(this);
         imageButtonTo.setOnClickListener(this);
         button.setOnClickListener(this);
     }
 
-//    public void onResume(){
-//        super.onResume();
-//        Toast.makeText(getContext(),"Resumed",Toast.LENGTH_SHORT).show();
-//    }
 
     public void onClick(View view){
         if (!(view.getId() == R.id.button2)){
+
             // Create the instance of DatePicker fragment and invoke show on that instance
             DatePickerFragment datePickerFragment = new DatePickerFragment();
             datePickerFragment.show(getFragmentManager(),"timePicker");
-
             selectedImageButton = (ImageButton)view;
+
             switch (selectedImageButton.getId()){
                 case R.id.toImageButton:
                     selectedId = (TextView) getActivity().findViewById(R.id.toDate);
@@ -91,7 +88,9 @@ public class TripToMyIdea extends Fragment implements View.OnClickListener {
                     selectedId = (TextView) getActivity().findViewById(R.id.fromDate);
                     break;
             }
+
         }else {
+
             Intent intent = new Intent(getContext(),ResultViewActivity.class);
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -103,8 +102,6 @@ public class TripToMyIdea extends Fragment implements View.OnClickListener {
                 Date date2 = sdf.parse(editTextFrom.getText().toString());
                 value2=date2.getTime();
 
-//                Log.d("value1",Long.toString(value1));
-//                Log.d("value2",Long.toString(value2)+"\n");
             }catch (Exception e){
 
             }

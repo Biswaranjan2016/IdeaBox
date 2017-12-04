@@ -48,7 +48,6 @@ public class ResultViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_view);
 
-//        resultView = (TextView) findViewById(R.id.resultview);
         //Instantiate the Database helper class
         ideaBoxDBHelper = new IdeaBoxDBHelper(this);
 

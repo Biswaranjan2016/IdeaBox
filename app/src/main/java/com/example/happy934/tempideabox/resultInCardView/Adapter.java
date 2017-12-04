@@ -23,7 +23,18 @@ import com.example.happy934.tempideabox.database.DataBaseTransactions;
 
 /**
  * Created by happy934 on 18/10/17.
+ *
+ *
  */
+
+/**
+ * General overview.
+ *
+ * Q: what this class does?
+ * A: This class provides information for the elements of the recycler viewer
+ *
+ * Adapter class inherits the Adapter of the RecycleView class
+ * */
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
     private final View.OnClickListener mOnClickListener = new MyOnClickListener();
