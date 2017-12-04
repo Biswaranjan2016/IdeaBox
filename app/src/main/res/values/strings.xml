@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">TempIdeaBox</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_text">Save my idea</string>
+    <string name="from_date">From date</string>
+    <string name="to_date">To date</string>
+    <string name="tags">Tags</string>
+    <string name="submit">Submit</string>
+    <string name="speechPrompt">Provide your input via speech</string>
+    <string name="dateFormat">dd/mm/yyyy</string>
+
+    <!--For the context Menu-->
+    <string name="view">View</string>
+    <string name="edit">Edit</string>
+    <string name="Delete">Remove</string>
+
+    <string-array name="tags">
+        <item> </item>
+        <item>Least important</item>
+        <item>Important</item>
+        <item>Most important</item>
+    </string-array>
+</resources>

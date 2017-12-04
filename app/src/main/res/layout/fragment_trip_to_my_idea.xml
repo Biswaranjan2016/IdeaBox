@@ -1,0 +1,128 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.happy934.tempideabox.TripToMyIdea">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:id="@+id/linearLayout">
+        <TextView
+            android:id="@+id/labelFromDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/label_size"
+            android:text="@string/from_date" />
+        <TextView
+            android:id="@+id/labelToDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/label_size"
+            android:text="@string/to_date"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pickers"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <TextView
+            android:id="@+id/fromDate"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:ems="10"
+
+            android:gravity="left"
+            android:hint="@string/dateFormat"
+            android:padding="6dp"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:id="@+id/fromImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_date_black_24dp" />
+
+        <TextView
+            android:id="@+id/toDate"
+            android:layout_width="152dp"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:gravity="left"
+            android:hint="@string/dateFormat"
+            android:padding="6dp"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:id="@+id/toImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat = "@drawable/ic_date_black_24dp"
+            />
+    </LinearLayout>
+
+    <TextView
+
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tags"
+        android:textSize="@dimen/label_size"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_below="@+id/view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <view
+        class="android.widget.TextView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/pickers"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:background="@android:color/darker_gray"
+        android:id="@+id/view" />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:textAllCaps="false"
+        android:onClick="resultView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:entries="@array/tags"
+        android:padding="10dp"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    </Spinner>
+
+</RelativeLayout>
