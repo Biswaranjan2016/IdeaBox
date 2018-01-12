@@ -60,14 +60,14 @@ public class ResultViewActivity extends AppCompatActivity {
         cardView = (CardView) findViewById(R.id.cardView);
         imageButton = (ImageButton) findViewById(R.id.imageButton);
 
+        //Receive the intent from Trip to my idea and extract the encoded information
         Intent intent = getIntent();
         String toDateString = intent.getStringExtra("toDate");
         toDate = Long.parseLong(toDateString);
         String fromDateString = intent.getStringExtra("fromDate");
         fromDate = Long.parseLong(fromDateString);
 
-        Log.d("time in ResultView",Long.toString(toDate));
-        Log.d("time in ResultView",Long.toString(fromDate));
+
         //Register the image button for the context menu
         registerForContextMenu(imageButton);
 
@@ -83,6 +83,8 @@ public class ResultViewActivity extends AppCompatActivity {
 
     }
 
+    //METHOD
+    //This method prepares the Queries the database and gets the data in a cursor
     private void getData(){
         String[] projection= {
                 IdeaBoxContract.IdeaBoxDB._ID,
@@ -109,7 +111,7 @@ public class ResultViewActivity extends AppCompatActivity {
 //                null                                    //The sort order
 //        );
 
-        Log.d("Inside getData()","getData()");
+//        Log.d("Inside getData()","getData()");
         if (cursor == null){
             Log.d("state of cursor : "," null");
         }
@@ -118,7 +120,6 @@ public class ResultViewActivity extends AppCompatActivity {
         itemDescription = new ArrayList<>();
         itemTag = new ArrayList<>();
         while (cursor.moveToNext()){
-//            Toast.makeText(getApplicationContext(),"Inside while of cursor",Toast.LENGTH_SHORT).show();
 //            Log.d("Inside while of cursor","Inside while of cursor");
             String  title = cursor.getString(cursor.getColumnIndexOrThrow(IdeaBoxContract.IdeaBoxDB.TITLE));
             String  description = cursor.getString(cursor.getColumnIndexOrThrow(IdeaBoxContract.IdeaBoxDB.DESCRIPTION));
@@ -144,6 +145,8 @@ public class ResultViewActivity extends AppCompatActivity {
         prepareArray();
     }
 
+    //METHOD
+    //This method prepares the array Or the data set for the Recycler View
     private void prepareArray(){
         int len = itemTitle.size();
         dataSet = new String[len][3];
