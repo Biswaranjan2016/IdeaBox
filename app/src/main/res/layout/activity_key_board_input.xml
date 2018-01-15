@@ -28,7 +28,7 @@
         android:paddingStart="4dp"
         android:paddingTop="4dp"
         android:textSize="40dp"
-        android:background="@android:color/transparent"/>
+        android:background="@drawable/border"/>
 
     <EditText
         android:id="@+id/description"

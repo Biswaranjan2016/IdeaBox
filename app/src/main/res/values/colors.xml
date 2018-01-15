@@ -8,4 +8,5 @@
     <color name="colorAccent">#fadfe1</color>
     <color name="colorPrimaryDark">#c4001d</color>
     <color name="colorPrimaryText">#FFFFFF</color>
+    <color name="borderColor">#bfbfbf</color>
 </resources>

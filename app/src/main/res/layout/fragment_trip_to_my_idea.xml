@@ -7,122 +7,88 @@
     tools:context="com.example.happy934.tempideabox.TripToMyIdea">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:background="@drawable/border"
+        android:padding="4dp"
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/fab_margin"
-        android:id="@+id/linearLayout">
-        <TextView
-            android:id="@+id/labelFromDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="@dimen/label_size"
-            android:text="@string/from_date" />
-        <TextView
-            android:id="@+id/labelToDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="@dimen/label_size"
-            android:text="@string/to_date"/>
+        android:orientation="vertical">
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/pickers"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/linearLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-
-        <TextView
-            android:id="@+id/fromDate"
-            android:layout_width="160dp"
-            android:layout_height="match_parent"
-            android:ems="10"
-
-            android:gravity="left"
-            android:hint="@string/dateFormat"
-            android:padding="6dp"
-            android:textSize="24sp" />
-
-        <ImageButton
-            android:id="@+id/fromImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_date_black_24dp" />
-
-        <TextView
+        <!--This immediate child of parent layout holds the layout for to date layout-->
+        <LinearLayout
             android:id="@+id/toDate"
-            android:layout_width="152dp"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:gravity="left"
-            android:hint="@string/dateFormat"
-            android:padding="6dp"
-            android:textSize="24sp" />
-
-        <ImageButton
-            android:id="@+id/toImageButton"
-            android:layout_width="wrap_content"
+            android:background="@drawable/grey_border"
+            android:layout_marginBottom="4dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat = "@drawable/ic_date_black_24dp"
-            />
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".70"
+                android:hint="@string/to_date"
+                android:padding="4dp"
+                android:textSize="20sp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_date_black_24dp"/>
+        </LinearLayout>
+
+        <!--The second child of the parent holds the layout for From date-->
+        <LinearLayout
+            android:id="@+id/fromDate"
+            android:background="@drawable/grey_border"
+            android:layout_marginBottom="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".70"
+                android:hint="@string/from_date"
+                android:padding="4dp"
+                android:textSize="20sp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_date_black_24dp"/>
+        </LinearLayout>
+
+        <!--The third child of the parent holds the layout to input tags-->
+        <LinearLayout
+            android:id="@+id/tags"
+            android:layout_marginBottom="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/tags"
+                android:padding="4dp"
+                android:textSize="20sp"
+                android:background="@drawable/grey_border"/>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/submit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:background="@drawable/grey_border"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit"
+                android:textAllCaps="false"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
     </LinearLayout>
-
-    <TextView
-
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/tags"
-        android:textSize="@dimen/label_size"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_below="@+id/view"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <view
-        class="android.widget.TextView"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/pickers"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_marginLeft="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginTop="@dimen/fab_margin"
-        android:background="@android:color/darker_gray"
-        android:id="@+id/view" />
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/submit"
-        android:textAllCaps="false"
-        android:onClick="resultView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        android:entries="@array/tags"
-        android:padding="10dp"
-        android:layout_alignTop="@+id/textView4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-    </Spinner>
 
 </RelativeLayout>
