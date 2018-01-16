@@ -6,8 +6,12 @@
     <string name="btn_text">Save my idea</string>
     <string name="from_date">From date</string>
     <string name="to_date">To date</string>
-    <string name="tags">Tags</string>
+    <string name="tags">Tags...</string>
     <string name="submit">Submit</string>
+    <string name="description">Description</string>
+    <string name="description_text">Any text</string>
+    <string name="description_image">Any image</string>
+    <string name="description_audio">Any voice clips</string>
     <string name="speechPrompt">Provide your input via speech</string>
     <string name="dateFormat">dd/mm/yyyy</string>
 
