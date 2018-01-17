@@ -12,4 +12,6 @@
 
 
     <dimen name="label_size">25sp</dimen>
+    <dimen name="resultViewTitle">16sp</dimen>
+    <dimen name="textSize">16sp</dimen>
 </resources>

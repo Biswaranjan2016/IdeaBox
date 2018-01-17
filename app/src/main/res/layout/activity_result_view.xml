@@ -12,6 +12,7 @@
         android:layout_height="120dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginBottom="@dimen/fab_margin"
         app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="4dp"
         tools:layout_editor_absoluteX="8dp"
@@ -44,8 +45,9 @@
                     android:layout_toLeftOf="@id/imageButton"
                     android:paddingLeft="@dimen/textmargin"
                     android:paddingTop="@dimen/textmargin"
-                    android:text="This is for Title"
-                    android:textSize="@dimen/label_size"
+                    android:text="@string/resultViewTitle"
+                    android:gravity="center"
+                    android:textSize="@dimen/resultViewTitle"
                     android:textStyle="bold" />
 
 
@@ -68,6 +70,38 @@
         </LinearLayout>
 
 
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorAccent"
+        app:cardCornerRadius="4dp"
+        android:layout_margin="8dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.70"
+                android:text="@string/title"
+                android:textSize="@dimen/textSize"
+                android:gravity="center"
+                android:paddingLeft="4dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/menu_overflow_material"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

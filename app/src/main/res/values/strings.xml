@@ -8,6 +8,7 @@
     <string name="to_date">To date</string>
     <string name="tags">Tags...</string>
     <string name="submit">Submit</string>
+    <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="description_text">Any text&#8230;</string>
     <string name="description_image">Any image&#8230;</string>
@@ -19,6 +20,9 @@
     <string name="view">View</string>
     <string name="edit">Edit</string>
     <string name="Delete">Remove</string>
+
+    <!--ResultView-->
+    <string name="resultViewTitle">This is for title</string>
 
     <string-array name="tags">
         <item> </item>
