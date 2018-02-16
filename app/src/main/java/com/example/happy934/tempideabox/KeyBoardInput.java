@@ -42,7 +42,9 @@ public class KeyBoardInput extends AppCompatActivity {
 
         editTextTitle = (EditText)findViewById(R.id.title);
         editTextDescription = (EditText)findViewById(R.id.description);
-        spinner = (Spinner)findViewById(R.id.spinner);
+
+        //This ui element has been removed and remove this from this file after a thorough review
+//        spinner = (Spinner)findViewById(R.id.spinner);
 
         editTextDescription.setText(description);
         //Instantiate the database
