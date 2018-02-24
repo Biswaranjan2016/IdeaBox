@@ -9,15 +9,23 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.happy934.tempideabox.cameraFeature.Camera;
 import com.example.happy934.tempideabox.database.IdeaBoxContract;
 import com.example.happy934.tempideabox.database.IdeaBoxDBHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+class Listeners implements View.OnClickListener{
+    public void onClick(View view){
+
+    }
+}
 
 public class KeyBoardInput extends AppCompatActivity {
 
@@ -29,6 +37,10 @@ public class KeyBoardInput extends AppCompatActivity {
 
     private EditText editTextTitle;
     private EditText editTextDescription;
+
+    private ImageButton camera;
+    private ImageButton audio;
+
     private Spinner spinner;
     IdeaBoxDBHelper ideaBoxDBHelper;
     SQLiteDatabase sqLiteDatabase;
@@ -43,6 +55,14 @@ public class KeyBoardInput extends AppCompatActivity {
         editTextTitle = (EditText)findViewById(R.id.title);
         editTextDescription = (EditText)findViewById(R.id.description);
 
+        camera = (ImageButton)findViewById(R.id.camera);
+        audio = (ImageButton)findViewById(R.id.audio);
+        camera.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(),Camera.class);
+                startActivity(intent);
+            }
+        });
         //This ui element has been removed and remove this from this file after a thorough review
 //        spinner = (Spinner)findViewById(R.id.spinner);
 
