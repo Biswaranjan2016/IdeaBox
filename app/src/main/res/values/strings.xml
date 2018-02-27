@@ -24,10 +24,6 @@
     <!--ResultView-->
     <string name="resultViewTitle">This is for title</string>
 
-    <string-array name="tags">
-        <item> </item>
-        <item>Least important</item>
-        <item>Important</item>
-        <item>Most important</item>
-    </string-array>
+    <!--Camera-->
+    <string name="btn_capture">Capture</string>
 </resources>

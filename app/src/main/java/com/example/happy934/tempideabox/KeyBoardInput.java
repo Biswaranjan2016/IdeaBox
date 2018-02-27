@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.happy934.tempideabox.cameraFeature.Camera;
+import com.example.happy934.tempideabox.camera.Cam;
 import com.example.happy934.tempideabox.database.IdeaBoxContract;
 import com.example.happy934.tempideabox.database.IdeaBoxDBHelper;
 
@@ -59,7 +59,7 @@ public class KeyBoardInput extends AppCompatActivity {
         audio = (ImageButton)findViewById(R.id.audio);
         camera.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(),Camera.class);
+                Intent intent = new Intent(getApplicationContext(), Cam.class);
                 startActivity(intent);
             }
         });
