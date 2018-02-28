@@ -14,20 +14,43 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"/>
 
-    <Button
-        android:id="@+id/btn_capture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/btn_capture"
-        android:textAllCaps="false"/>
+    <RelativeLayout
+        android:id="@+id/btns_relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/btn_capture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="false"
+            android:layout_centerInParent="false"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="100dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/btn_capture"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_viewAndConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/btn_capture"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/btn_confirmAndSave"
+            android:onClick="viewAndAction"
+            android:textAllCaps="false"/>
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_above="@id/btn_capture"
+        android:layout_above="@id/btns_relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:scrollbars="horizontal"

@@ -1,7 +1,11 @@
 package com.example.happy934.tempideabox.camera;
 
+import android.app.DialogFragment;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,23 +26,33 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageHolder>
 
     private List<File> files;
     private final String TAG = "Recycler View";
+    Cam cam;
 
     class ImageHolder extends RecyclerView.ViewHolder{
         public ImageView imageView;
 
-        public ImageHolder(View view){
+
+        public ImageHolder(View view) {
             super(view);
             imageView = (ImageView) view.findViewById(R.id.imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Cam cam = new Cam();
+                }
+            });
         }
+
     }
+
 
     public ImageAdapter(List<File> files){
         this.files = files;
-        Log.e(TAG,"Inside Constructor");
     }
 
     @Override
     public ImageHolder onCreateViewHolder(ViewGroup parent, int viewType){
+
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.image_view,
                 parent,false);
 

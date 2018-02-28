@@ -26,4 +26,5 @@
 
     <!--Camera-->
     <string name="btn_capture">Capture</string>
+    <string name="btn_confirmAndSave">View And confirm</string>
 </resources>

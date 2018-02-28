@@ -3,6 +3,7 @@ package com.example.happy934.tempideabox.camera;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
@@ -59,7 +60,7 @@ public class Cam extends AppCompatActivity{
 
     private static final String Tag = "xxxxxxxxxxxxxxxxxxx";
     int fileCounter = 1;
-    List<File> photoList = null;
+    static List<File> photoList = null;
     private Button capture;
     private TextureView textureView;
 
@@ -114,6 +115,8 @@ public class Cam extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cam);
 
+//        redirectForConfirmation();
+
         //Get the TextureView from the xml
         textureView = (TextureView)findViewById(R.id.textureView);
         assert textureView != null;
@@ -130,6 +133,8 @@ public class Cam extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 takePicture();
+//                Intent intent = new Intent(getApplicationContext(),ImageSelector.class);
+//                startActivity(intent);
             }
         });
 
@@ -557,6 +562,20 @@ public class Cam extends AppCompatActivity{
         stopBackgroundThread();
         super.onPause();
     }
+
+    public void redirectForConfirmation(){
+
+    }
+
+    public void viewAndAction(View view){
+
+        if (photoList.size() > 0){
+            Intent intent = new Intent(this, ImageSelector.class);
+            startActivity(intent);
+        }
+
+    }
+
 
 }
 

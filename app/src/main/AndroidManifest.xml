@@ -3,8 +3,9 @@
     package="com.example.happy934.tempideabox">
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.camera2.full"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera2.full" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +28,9 @@
         <activity android:name=".database.DataBaseTransactions" />
         <activity android:name=".cameraFeature.Camera" />
         <activity android:name=".cameraFeature2.Camera" />
-        <activity android:name=".camera.Cam"></activity>
+        <activity android:name=".camera.Cam" />
+        <activity android:name=".camera.ImageAdapter$ShowDialog" />
+        <activity android:name=".camera.ImageSelector"></activity>
     </application>
 
 </manifest>
