@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ImageSelectorAdapter extends RecyclerView.Adapter<ImageSelectorAdapter.ImageSelectorHolder>{
 
-    static List<File> files;
+    public static List<File> files;
     static File file;
     static int index;
 

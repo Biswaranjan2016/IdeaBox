@@ -6,6 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -14,12 +17,16 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.happy934.tempideabox.camera.Cam;
+import com.example.happy934.tempideabox.camera.ImageAdapter;
+import com.example.happy934.tempideabox.camera.ImageSelectorAdapter;
 import com.example.happy934.tempideabox.database.IdeaBoxContract;
 import com.example.happy934.tempideabox.database.IdeaBoxDBHelper;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 class Listeners implements View.OnClickListener{
     public void onClick(View view){
@@ -44,14 +51,22 @@ public class KeyBoardInput extends AppCompatActivity {
     private Spinner spinner;
     IdeaBoxDBHelper ideaBoxDBHelper;
     SQLiteDatabase sqLiteDatabase;
+
+    RecyclerView recyclerView;
+    List<File> files;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_key_board_input);
 
         Intent intent = getIntent();
         String description = intent.getStringExtra("description");
 
+        /*
+        * Edit Text
+        * */
         editTextTitle = (EditText)findViewById(R.id.title);
         editTextDescription = (EditText)findViewById(R.id.description);
 
@@ -63,8 +78,14 @@ public class KeyBoardInput extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //This ui element has been removed and remove this from this file after a thorough review
-//        spinner = (Spinner)findViewById(R.id.spinner);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView_keyBoardInput_images);
+        files = ImageSelectorAdapter.files;
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setAdapter(new ImageAdapter(files));
 
         editTextDescription.setText(description);
         //Instantiate the database
@@ -72,7 +93,9 @@ public class KeyBoardInput extends AppCompatActivity {
 
         //Gets the data repository in write mode
         sqLiteDatabase = ideaBoxDBHelper.getWritableDatabase();
+
     }
+
     public void onInput(View view){
         //Get the values from the fields in the layout to insert into the database
         getValues(view);
@@ -132,4 +155,5 @@ public class KeyBoardInput extends AppCompatActivity {
 
         Log.d("time in Input",Long.toString(timeInMilliSeconds));
     }
+
 }

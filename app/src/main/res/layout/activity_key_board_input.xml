@@ -77,13 +77,13 @@
             android:background="@drawable/grey_border"
             android:layout_marginBottom="4dp">
 
-            <TextView
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_keyBoardInput_images"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.70"
-                android:text="@string/description_image"
-                android:gravity="left|center"
-                android:paddingLeft="4dp"/>
+                android:layout_weight="0.70">
+
+            </android.support.v7.widget.RecyclerView>
             <ImageButton
                 android:id="@+id/camera"
                 android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
         </LinearLayout>
 
         <!--This linearlayout defines the layout for voice clips layout-->
-        <!-- 2 - (Linear Layout)-->
+        <!-- 2 - r6V1X937Vmnh(Linear Layout)-->
         <LinearLayout
             android:id="@+id/speechLayout"
             android:layout_width="match_parent"
