@@ -9,4 +9,9 @@
     <color name="colorPrimaryDark">#c4001d</color>
     <color name="colorPrimaryText">#FFFFFF</color>
     <color name="borderColor">#bfbfbf</color>
+
+
+    <color name="greenPrimary">#3bcea2</color>
+    <color name="greenSecondary">#d0f3e9</color>
+
 </resources>

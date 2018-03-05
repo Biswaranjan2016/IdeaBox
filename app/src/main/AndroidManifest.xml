@@ -30,7 +30,8 @@
         <activity android:name=".cameraFeature2.Camera" />
         <activity android:name=".camera.Cam" />
         <activity android:name=".camera.ImageAdapter$ShowDialog" />
-        <activity android:name=".camera.ImageSelector"></activity>
+        <activity android:name=".camera.ImageSelector" />
+        <activity android:name=".speech.Mic"></activity>
     </application>
 
 </manifest>
