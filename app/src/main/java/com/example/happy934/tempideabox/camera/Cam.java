@@ -559,6 +559,7 @@ public class Cam extends AppCompatActivity{
     @Override
     protected void onPause(){
         Log.d(Tag,"in onPause()");
+        closeCamera();
         stopBackgroundThread();
         super.onPause();
     }
