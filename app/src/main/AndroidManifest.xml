@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".KeyBoardInput" />
+        <activity android:name=".KeyBoardInput"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".ResultViewActivity" />
         <activity android:name=".temporaryCardTest.TemporaryCardTest" />
         <activity android:name=".resultInCardView.RecyclerViewResult" />
