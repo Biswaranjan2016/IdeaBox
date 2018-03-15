@@ -21,6 +21,7 @@ import com.example.happy934.tempideabox.camera.ImageAdapter;
 import com.example.happy934.tempideabox.camera.ImageSelectorAdapter;
 import com.example.happy934.tempideabox.database.IdeaBoxContract;
 import com.example.happy934.tempideabox.database.IdeaBoxDBHelper;
+import com.example.happy934.tempideabox.speech.Mic;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -75,6 +76,14 @@ public class KeyBoardInput extends AppCompatActivity {
         camera.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), Cam.class);
+                startActivity(intent);
+            }
+        });
+
+        audio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Mic.class);
                 startActivity(intent);
             }
         });

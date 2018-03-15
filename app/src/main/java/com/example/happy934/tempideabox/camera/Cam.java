@@ -115,8 +115,6 @@ public class Cam extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cam);
 
-//        redirectForConfirmation();
-
         //Get the TextureView from the xml
         textureView = (TextureView)findViewById(R.id.textureView);
         assert textureView != null;
@@ -143,7 +141,7 @@ public class Cam extends AppCompatActivity{
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         imageAdapter = new ImageAdapter(photoList);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
 
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(getApplicationContext());
         layoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
