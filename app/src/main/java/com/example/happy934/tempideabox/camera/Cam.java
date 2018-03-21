@@ -60,7 +60,8 @@ public class Cam extends AppCompatActivity{
 
     private static final String Tag = "xxxxxxxxxxxxxxxxxxx";
     int fileCounter = 1;
-    static List<File> photoList = null;
+    public static List<File> photoList = null;
+    public static List<File> confirmedPhotoList = null;
     private Button capture;
     private TextureView textureView;
 
@@ -131,17 +132,16 @@ public class Cam extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 takePicture();
-//                Intent intent = new Intent(getApplicationContext(),ImageSelector.class);
-//                startActivity(intent);
             }
         });
 
-        photoList = new ArrayList<>();
+        if (!ImageSelector.flag || photoList == null ) {
+            photoList = new ArrayList<>();
+            confirmedPhotoList = new ArrayList<>();
+        }
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         imageAdapter = new ImageAdapter(photoList);
-
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
 
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(getApplicationContext());
         layoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -149,6 +149,7 @@ public class Cam extends AppCompatActivity{
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(layoutManager1);
         recyclerView.setAdapter(imageAdapter);
+        imageAdapter.notifyDataSetChanged();
     }
 
     /*
@@ -235,7 +236,6 @@ public class Cam extends AppCompatActivity{
 
     /*
     *   Initiates the procedure to take a picture
-    *
     *
     * */
     protected void takePicture(){
@@ -542,6 +542,8 @@ public class Cam extends AppCompatActivity{
     protected void onResume(){
         super.onResume();
         Log.d(Tag,"in onResume()");
+
+        imageAdapter.notifyDataSetChanged();
 
         //Start the backGround Thread
         startBackgroundThread();

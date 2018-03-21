@@ -13,7 +13,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.happy934.tempideabox.camera.Cam;
@@ -29,13 +31,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-class Listeners implements View.OnClickListener{
-    public void onClick(View view){
-
-    }
-}
-
 public class KeyBoardInput extends AppCompatActivity {
+
+    private final String TAG = "KeyBoardInput";
 
     private String title;
     private String description;
@@ -88,13 +86,7 @@ public class KeyBoardInput extends AppCompatActivity {
             }
         });
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView_keyBoardInput_images);
-        files = ImageSelectorAdapter.files;
 
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setAdapter(new ImageAdapter(files));
 
         editTextDescription.setText(description);
         //Instantiate the database
@@ -102,6 +94,29 @@ public class KeyBoardInput extends AppCompatActivity {
 
         //Gets the data repository in write mode
         sqLiteDatabase = ideaBoxDBHelper.getWritableDatabase();
+
+    }
+
+    public void onResume(){
+        super.onResume();
+        if (Cam.photoList != null && Cam.photoList.size() > 0){
+            int sizeOfListInstance = Cam.photoList.size();
+            Log.e("KeyBoardInput","non null instance");
+            Log.e(TAG,Integer.toString(sizeOfListInstance));
+
+            recyclerView = (RecyclerView) findViewById(R.id.recyclerView_keyBoardInput_images);
+            files = Cam.confirmedPhotoList;
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+            linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.setAdapter(new ImageAdapter(files));
+
+        }else {
+            Log.e("KeyBoardInput","null list instance");
+        }
 
     }
 
