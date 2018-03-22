@@ -43,12 +43,14 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.happy934.tempideabox.R;
+import com.example.happy934.tempideabox.obj.KeyBoardInputObj;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,10 +60,10 @@ import java.util.stream.Stream;
 @TargetApi(23)
 public class Cam extends AppCompatActivity{
 
-    private static final String Tag = "xxxxxxxxxxxxxxxxxxx";
+    private static final String Tag = "Cam";
     int fileCounter = 1;
     public static List<File> photoList = null;
-    public static List<File> confirmedPhotoList = null;
+//    public static List<File> confirmedPhotoList = null;
     private Button capture;
     private TextureView textureView;
 
@@ -101,9 +103,11 @@ public class Cam extends AppCompatActivity{
     private Handler backgroundHandler;
     private HandlerThread mBackgroundThread;
 
+    private boolean recyclerViewInitializer = false;
     RecyclerView recyclerView;
     ImageAdapter imageAdapter;
 
+    Serializable serializableKeyBoardInput;
     /*
     * This is the activity lifecycle method.
     *
@@ -114,7 +118,11 @@ public class Cam extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        Log.e(Tag,"oncreate()::Cam");
         setContentView(R.layout.activity_cam);
+
+        Intent intent = getIntent();
+        serializableKeyBoardInput = intent.getSerializableExtra("InputObj");
 
         //Get the TextureView from the xml
         textureView = (TextureView)findViewById(R.id.textureView);
@@ -135,26 +143,39 @@ public class Cam extends AppCompatActivity{
             }
         });
 
-        if (!ImageSelector.flag || photoList == null ) {
+        if (photoList == null ) {
+            Log.e(Tag,"inside if");
             photoList = new ArrayList<>();
-            confirmedPhotoList = new ArrayList<>();
         }
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        imageAdapter = new ImageAdapter(photoList);
 
-        LinearLayoutManager layoutManager1 = new LinearLayoutManager(getApplicationContext());
-        layoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
-
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setLayoutManager(layoutManager1);
-        recyclerView.setAdapter(imageAdapter);
-        imageAdapter.notifyDataSetChanged();
+        initialiseRecyclerView();
     }
 
-    /*
-    * Create a SurfaceTextureListener
-    * */
+    private void initialiseRecyclerView(){
+        if (!recyclerViewInitializer){
+            Log.e(Tag,"Bool value : "+Boolean.toString(recyclerViewInitializer));
+            recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+            imageAdapter = new ImageAdapter(photoList);
+
+            LinearLayoutManager layoutManager1 = new LinearLayoutManager(getApplicationContext());
+            layoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setLayoutManager(layoutManager1);
+            recyclerView.setAdapter(imageAdapter);
+            imageAdapter.notifyDataSetChanged();
+            recyclerViewInitializer = true;
+        }else {
+            Log.e(Tag,"Bool value : "+Boolean.toString(recyclerViewInitializer));
+        }
+    }
+
+    private void printListSize(List<File> files){
+        Log.e(Tag,Integer.toString(files.size())+" Size of list");
+    }
+
+    // Create a SurfaceTextureListener
     TextureView.SurfaceTextureListener surfaceTextureListener = new TextureView.SurfaceTextureListener() {
 
         /*
@@ -181,9 +202,7 @@ public class Cam extends AppCompatActivity{
         }
     };
 
-    /*
-    * This is a callback related to state of the CameraDevice
-    * */
+    // This is a callback related to state of the CameraDevice
     private final CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(@NonNull CameraDevice camera) {
@@ -307,8 +326,6 @@ public class Cam extends AppCompatActivity{
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION,ORIENTATIONS.get(rotation));
 
-            //Create a file to store the obtained image
-            // final File file = new File(Environment.getExternalStorageDirectory()+"/pic.jpeg");
 
             /*
             * Set the listener for ImageReader to get the image based on the availability
@@ -353,7 +370,7 @@ public class Cam extends AppCompatActivity{
                 @Override
                 public void onCaptureCompleted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, @NonNull TotalCaptureResult result) {
                     super.onCaptureCompleted(session, request, result);
-                    Toast.makeText(Cam.this,"Saved "+file,Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(Cam.this,"Saved "+file,Toast.LENGTH_SHORT).show();
                     createCameraPreview();
                 }
             };
@@ -541,6 +558,9 @@ public class Cam extends AppCompatActivity{
     @Override
     protected void onResume(){
         super.onResume();
+//        if (ImageSelector.flag){
+//            finish();
+//        }
         Log.d(Tag,"in onResume()");
 
         imageAdapter.notifyDataSetChanged();
@@ -572,6 +592,7 @@ public class Cam extends AppCompatActivity{
 
         if (photoList.size() > 0){
             Intent intent = new Intent(this, ImageSelector.class);
+            intent.putExtra("InputObj",serializableKeyBoardInput);
             startActivity(intent);
         }
 

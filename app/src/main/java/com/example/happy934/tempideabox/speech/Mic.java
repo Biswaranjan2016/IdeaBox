@@ -36,7 +36,7 @@ public class Mic extends AppCompatActivity {
 
     private static String fileName = null;
     private String timeStamp = null;
-    List<String> paths = null;
+    public static List<String> paths = null;
 
     private ImageButton recordButton = null;
     private MediaRecorder mediaRecorder = null;
@@ -193,7 +193,6 @@ public class Mic extends AppCompatActivity {
             recyclerView.setItemAnimator(new DefaultItemAnimator());
             recyclerView.setLayoutManager(layoutManager);
         }
-
 
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
     }

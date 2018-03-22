@@ -13,8 +13,10 @@ import android.widget.ImageView;
 
 import com.example.happy934.tempideabox.KeyBoardInput;
 import com.example.happy934.tempideabox.R;
+import com.example.happy934.tempideabox.obj.KeyBoardInputObj;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.List;
 
 public class ImageSelector extends AppCompatActivity {
@@ -23,10 +25,11 @@ public class ImageSelector extends AppCompatActivity {
     ImageSelectorAdapter imageAdapter;
     List<File> photoList;
     static boolean flag = false;
+    public static boolean isChecked = false;
     private final String TAG = "ImageSelector";
 
     static ImageView imageView;
-
+    Serializable serializableKeyBoardInput;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +37,12 @@ public class ImageSelector extends AppCompatActivity {
 
         imageView = (ImageView) findViewById(R.id.imageView_ConfirmationPage);
 
+        Intent intent = new Intent();
+        serializableKeyBoardInput = intent.getSerializableExtra("InputObj");
         if (Cam.photoList != null){
-            this.photoList = Cam.photoList;
+//            this.photoList = Cam.photoList;
             recyclerView = (RecyclerView) findViewById(R.id.recyclerView_ConfirmationPage);
-            imageAdapter = new ImageSelectorAdapter(photoList);
+            imageAdapter = new ImageSelectorAdapter(Cam.photoList);
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -48,41 +53,38 @@ public class ImageSelector extends AppCompatActivity {
         }
     }
     public void onConfirm(View view){
+
         flag = true;
-        Cam.photoList = this.photoList;
+        isChecked = true;
         Intent intent = new Intent(getApplicationContext(), KeyBoardInput.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+
     }
     public static void setImage(){
-        Log.d("xxxxxxxxxxx","Inside setImage");
         if(ImageSelectorAdapter.file != null){
             imageView.setImageBitmap(BitmapFactory.decodeFile(ImageSelectorAdapter.file.getPath()));
         }
-        else {
-            Log.d("xxxxxxxxxxx","Null File instance");
-        }
     }
     public void goBack(View view){
-        Cam.photoList = this.photoList;
-        Cam.confirmedPhotoList = this.photoList;
         this.onBackPressed();
     }
     public void onDelete(View view){
         if (ImageSelectorAdapter.index >= 0){
-            if (photoList.size() > 0){
+            if (Cam.photoList.size() > 0){
 
 
-                if (photoList.size() == 1){
+                if (Cam.photoList.size() == 1){
                     imageView.setImageResource(R.drawable.ic_image_black_24dp);
                 }
-                else if (ImageSelectorAdapter.index == photoList.size()-1) {
+                else if (ImageSelectorAdapter.index == Cam.photoList.size()-1) {
                     imageView.setImageBitmap(BitmapFactory.decodeFile(ImageSelectorAdapter.files.get(0).getPath()));
                 }
                 else{
-                    imageView.setImageBitmap(BitmapFactory.decodeFile(photoList.get(ImageSelectorAdapter.index+1).getPath()));
+                    imageView.setImageBitmap(BitmapFactory.decodeFile(Cam.photoList.get(ImageSelectorAdapter.index+1).getPath()));
                 }
-                photoList.remove(ImageSelectorAdapter.index);
-                ImageSelectorAdapter.files = this.photoList;
+                Cam.photoList.remove(ImageSelectorAdapter.index);
+                ImageSelectorAdapter.files = Cam.photoList;
                 ImageSelectorAdapter.index = -1;
                 imageAdapter.notifyDataSetChanged();
             }else if(ImageSelectorAdapter.files.size() == 0){

@@ -1,6 +1,8 @@
 package com.example.happy934.tempideabox.obj;
 
 import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by happy on 21/3/18.
@@ -10,16 +12,20 @@ public class DatabaseDataObject {
 
     private String title;
 
-    private Blob pictureBlob;
-    private Blob audioBlob;
+    private List<Blob> pictureBlobs;
+    private List<Blob> audioBlobs;
     private String description;
 
     private String[] tags;
 
+    public DatabaseDataObject(){
+        pictureBlobs = new ArrayList<>();
+        audioBlobs = new ArrayList<>();
+    }
     public DatabaseDataObject(String title,Blob pictureBlob, Blob audioBlob, String description, String tags[]){
         this.title = title;
-        this.pictureBlob = pictureBlob;
-        this.audioBlob = audioBlob;
+        this.pictureBlobs.add(pictureBlob);
+        this.audioBlobs.add(audioBlob);
         this.description = description;
         this.tags = tags;
     }
@@ -32,20 +38,28 @@ public class DatabaseDataObject {
         this.title = title;
     }
 
-    public Blob getPictureBlob() {
-        return pictureBlob;
+    public List<Blob> getPictureBlobs() {
+        return pictureBlobs;
     }
 
     public void setPictureBlob(Blob pictureBlob) {
-        this.pictureBlob = pictureBlob;
+        pictureBlobs.add(pictureBlob);
     }
 
-    public Blob getAudioBlob() {
-        return audioBlob;
+    public List<Blob> getAudioBlobs() {
+        return audioBlobs;
     }
 
     public void setAudioBlob(Blob audioBlob) {
-        this.audioBlob = audioBlob;
+        this.audioBlobs.add(audioBlob);
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String[] getTags() {
@@ -54,12 +68,5 @@ public class DatabaseDataObject {
 
     public void setTags(String[] tags) {
         this.tags = tags;
-    }
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

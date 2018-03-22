@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".KeyBoardInput"
+            android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan"
             />
         <activity android:name=".ResultViewActivity" />
