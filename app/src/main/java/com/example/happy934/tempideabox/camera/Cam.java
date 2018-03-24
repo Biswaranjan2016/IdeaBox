@@ -147,7 +147,7 @@ public class Cam extends AppCompatActivity{
             Log.e(Tag,"inside if");
             photoList = new ArrayList<>();
         }
-
+        photoList.clear();
 
         initialiseRecyclerView();
     }

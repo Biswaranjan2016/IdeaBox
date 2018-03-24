@@ -42,7 +42,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     public void onDateSet(DatePicker datePicker,int year, int month, int day){
 
-        date = Integer.toString(day)+"/"+Integer.toString(month)+"/"+Integer.toString(year);
+        date = Integer.toString(day)+"/"+Integer.toString(month+1)+"/"+Integer.toString(year);
         TripToMyIdea.selectedId.setText(date);
     }
 }

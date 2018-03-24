@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature android:name="android.hardware.camera2.full" />
 
@@ -22,10 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".KeyBoardInput"
+        <activity
+            android:name=".KeyBoardInput"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustPan"
-            />
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ResultViewActivity" />
         <activity android:name=".temporaryCardTest.TemporaryCardTest" />
         <activity android:name=".resultInCardView.RecyclerViewResult" />
@@ -35,7 +35,10 @@
         <activity android:name=".camera.Cam" />
         <activity android:name=".camera.ImageAdapter$ShowDialog" />
         <activity android:name=".camera.ImageSelector" />
-        <activity android:name=".speech.Mic"></activity>
+        <activity android:name=".speech.Mic" />
+        <activity android:name=".KeyBoardInput2" />
+        <activity android:name=".KeyBoardInputForUpdate"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

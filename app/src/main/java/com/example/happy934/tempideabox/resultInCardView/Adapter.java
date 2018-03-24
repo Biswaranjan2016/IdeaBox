@@ -52,7 +52,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
         MyViewHolder(View view){
 
             super(view);
-            cardView = view.findViewById(R.id.cardView);
+//            cardView = view.findViewById(R.id.cardView);
             title = view.findViewById(R.id.title);
             description = view.findViewById(R.id.description);
             view.setOnCreateContextMenuListener(this);

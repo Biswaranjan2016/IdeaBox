@@ -37,14 +37,13 @@ public class ImageSelectorAdapter extends RecyclerView.Adapter<ImageSelectorAdap
         }
 
         public void onClick(View view){
+
             imageViewLocal = (ImageView) view.findViewById(R.id.imageButton_ConfirmationPage);
             assert imageViewLocal != null;
             index = this.getAdapterPosition();
             file = files.get(index);
             ImageSelector.setImage();
 
-            Log.e("xxxxxxxxxxxx","123456789");
-            Log.e("xxxxxxxxxxxxx", Integer.toString(this.getAdapterPosition()));
         }
     }
 

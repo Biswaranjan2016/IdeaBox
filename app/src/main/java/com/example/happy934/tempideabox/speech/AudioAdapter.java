@@ -18,7 +18,7 @@ import java.util.List;
  * Created by happy on 6/3/18.
  */
 
-class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioHolder>{
+public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioHolder>{
 
     List<String> paths;
     String path = null;
